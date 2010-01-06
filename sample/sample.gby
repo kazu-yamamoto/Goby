@@ -1,0 +1,118 @@
+
+[]A default format
+[-]
+	[*] The 1st line should be blank as top margin.
+	[*] The 2nd line is a title.
+		[*] If necessary, you can write a title on multiple lines.
+		[*] Centering is "C-c;c".
+	[*] Insert a bar below the title.
+		[*] To insert a bar, type "C-c;-".
+	[*] Write items below the bar.
+		[*] To insert a TAB character, type the "TAB" key or "C-i".
+	[*] C-l is a page separator.
+		[*] To insert C-l, type "C-qC-l".
+
+	[*] You should create a presentation material
+	  on WYSIWYG manner.
+		[*] Don't edit the source file directly.
+
+	[*] To go to the View mode, type "C-c;v".
+	[*] To move to a next page, type "SPC".
+
+
+[]Aqua life
+[-]
+
+[][image "lionfish.jpg" 400/1024]  [image "squilla.jpg" 400/1024]
+
+	[*] Lionfish (left)
+	[*] Squilla (right)
+
+
+
+[]Fermat
+[-]
+	[*] Pytagoras's theorem
+		When the hypotenuse of a right triangle is z,
+		and its two sides are x and y, then
+		    x 2 + y 2 = z 2
+		There are infinite integer solutions for x, y and z.
+
+	[*] Fermat's last theorem
+		When an integer n >= 3,
+		    x n + y n = z n
+		has no non-zero integer solutions for x, y and z.
+
+	[*] Fermat's little theorem
+		If p is a prime and a is an integer, then
+		    a p = a (mod p)
+[properties]
+((goby-math
+  (839 840 . t)
+  (866 867 . t)
+  (872 873 . t)
+  (886 887 . t)
+  (887 889 raise 0.6)
+  (889 893 . t)
+  (893 895 raise 0.6)
+  (895 899 . t)
+  (899 901 raise 0.6)
+  (945 949 . t)
+  (954 955 . t)
+  (1003 1009 . t)
+  (1017 1018 . t)
+  (1018 1020 raise 0.6)
+  (1020 1024 . t)
+  (1024 1026 raise 0.6)
+  (1026 1030 . t)
+  (1030 1032 raise 0.6)
+  (1073 1077 . t)
+  (1082 1083 . t)
+  (1120 1121 . t)
+  (1137 1138 . t)
+  (1165 1166 . t)
+  (1166 1168 raise 0.6)
+  (1168 1172 . t)
+  (1178 1179 . t))
+ (839 840 100 5 2)
+ (866 867 100 4 2)
+ (872 873 100 4 2)
+ (886 887 100 4 2)
+ (887 888 100 2 2)
+ (888 889 100 2 2)
+ (890 891 100 4 2)
+ (892 893 100 4 2)
+ (893 894 100 2 2)
+ (894 895 100 2 2)
+ (896 897 100 4 2)
+ (898 899 100 4 2)
+ (899 900 100 2 2)
+ (900 901 100 2 2)
+ (945 947 100 4 2)
+ (948 949 100 4 2)
+ (954 955 100 4 2)
+ (1003 1004 100 4 2)
+ (1005 1007 100 4 2)
+ (1008 1009 100 4 2)
+ (1017 1018 100 4 2)
+ (1018 1019 100 2 2)
+ (1019 1020 100 2 2)
+ (1021 1022 100 4 2)
+ (1023 1024 100 4 2)
+ (1024 1025 100 2 2)
+ (1025 1026 100 2 2)
+ (1027 1028 100 4 2)
+ (1029 1030 100 4 2)
+ (1030 1031 100 2 2)
+ (1031 1032 100 2 2)
+ (1073 1075 100 4 2)
+ (1076 1077 100 4 2)
+ (1082 1083 100 4 2)
+ (1120 1121 100 4 2)
+ (1137 1138 100 4 2)
+ (1165 1166 100 4 2)
+ (1166 1167 100 2 2)
+ (1167 1168 100 2 2)
+ (1169 1170 100 4 2)
+ (1171 1172 100 4 2)
+ (1178 1179 100 4 2))
