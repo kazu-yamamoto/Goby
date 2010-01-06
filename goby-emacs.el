@@ -42,7 +42,9 @@
 (defun goby-image-help-echo (win buf pos)
   (unless (eq major-mode 'goby-view-mode)
     (let ((image (get-text-property pos 'display buf)))
-      (nth 1 (member :mewfile image)))))
+      (format "%s (%s)"
+	      (nth 1 (member :mewfile image))
+	      (nth 1 (member :mewtag image))))))
 
 (defun goby-line-over-p (&optional pos)
   (goto-char (or pos (point-min)))

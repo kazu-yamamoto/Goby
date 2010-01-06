@@ -66,6 +66,7 @@
    ("/" . goby-face-math-divide)
    ("i" . goby-insert-image)
    ("s" . goby-change-scale)
+   ("t" . goby-toggle-tag)
    ("c" . goby-center-line)
    ("-" . goby-insert-bar)
    ("*" . goby-insert-item)
@@ -172,9 +173,11 @@
 (defvar goby-bar-string "[-]")
 (defvar goby-item-string "[*]")
 (defvar goby-pause-string "[#]")
-(defvar goby-image-format  "[image \"%s\"]")
-(defvar goby-image-format2 "[image \"%s\" %s]")
-(defvar goby-image-regex "\\[image \"\\([^\"]+\\)\" ?\\([^]]+\\)?\\]")
+(defvar goby-image-format "[image \"%s\" %s<%s>]")
+;; backward compatibility
+(defvar goby-image-regex "\\[image \"\\([^\"]+\\)\" ?\\([^]<> ]+\\)?<?\\([^]<> ]+\\)?>?\\]")
+(defvar goby-image-private "private")
+(defvar goby-image-public  "public")
 
 (defvar goby-image-spec
   '(("\\.pnm$" t)

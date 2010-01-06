@@ -346,22 +346,23 @@ be omitted."
       (setq family (goby-get-family (goby-get-face-family name)))
       (setq ratio (goby-get-face-ratio name))
       (setq italic (goby-get-face-italic name))
-      (if italic (setq family goby-math))
-      (setq ent (assoc family goby-ps-font-alist))
-      (setq psfont (nth 1 ent))
-      (if (null psfont) (error "no psfont"))
       (setq str (buffer-substring-no-properties (point) next))
       (if (or (null max) (> ratio max)) (setq max ratio))
       (cond
        ((looking-at goby-ascii-regex)
+	(if italic (setq family goby-math))
 	(if (string-match "[][()<>/%\\]" str)
 	    (setq str (goby-ps-get-hexstr str 0))
 	  (setq str (concat "(" str ")"))))
        ((memq 'latin-iso8859-1 (find-charset-string str))
 	(setq str nil)) ;; xxx
        (t
+	(if (and italic (string= family goby-times)) (setq family goby-mincho))
 	(setq str (goby-ps-get-hexstr
 		   (encode-coding-string str 'euc-jp) 128))))
+      (setq ent (assoc family goby-ps-font-alist))
+      (setq psfont (nth 1 ent))
+      (if (null psfont) (error "no psfont"))
       (when str
 	(set-buffer ps-buf)
 	(if raise (insert (format "%d %f RAISE " ratio (nth 1 raise))))
@@ -387,29 +388,31 @@ be omitted."
 
 (defun goby-ps-insert-image (ps-buf max)
   (let ((goby-buf (current-buffer))
-	file scale pixel-width 
+	file scale tag pixel-width 
 	xy-ratio x-ratio y-ratio epsfile epsi)
     (when (looking-at goby-image-regex)
       (setq epsi nil)
       (setq file (goby-image-get-file))
       (setq scale (goby-image-get-scale))
+      (setq tag (goby-image-get-tag))
       (setq epsfile (concat (file-name-sans-extension file)
 			    goby-ps-epsfile-suffix))
       (setq xy-ratio (goby-ps-get-image-ratio))
       (setq x-ratio (goby-get-x-ratio xy-ratio))
       (setq y-ratio (goby-get-y-ratio xy-ratio))
       (set-buffer ps-buf)
-      (cond
-       ((file-readable-p epsfile)
-	(setq epsi (goby-ps-load-eps epsfile x-ratio y-ratio)))
-       ((null scale)
-	(setq epsi (goby-ps-create-eps file x-ratio y-ratio)))
-       (t
-	(setq pixel-width (goby-scale-pixel-width scale))
-	(setq epsi (goby-ps-create-eps file x-ratio y-ratio pixel-width))))
-      (when epsi
-	(setq goby-ps-have-eps t)
-	(insert epsi)))
+      (when (string= tag goby-image-public)
+	(cond
+	 ((file-readable-p epsfile)
+	  (setq epsi (goby-ps-load-eps epsfile x-ratio y-ratio)))
+	 ((null scale)
+	  (setq epsi (goby-ps-create-eps file x-ratio y-ratio)))
+	 (t
+	  (setq pixel-width (goby-scale-pixel-width scale))
+	  (setq epsi (goby-ps-create-eps file x-ratio y-ratio pixel-width))))
+	(when epsi
+	  (setq goby-ps-have-eps t)
+	  (insert epsi))))
     (set-buffer goby-buf)
     (if (or (null max) (> y-ratio max)) y-ratio max)))
 
