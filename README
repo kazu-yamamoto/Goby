@@ -3,7 +3,7 @@
 			    Kazu Yamamoto
 			     kazu@Mew.org
 
-Goby is a WYSIWYG presentation tool which runs on Emacs 22.
+Goby is a WYSIWYG presentation tool which runs on Emacs 22 or later.
 
 Please refer to the following page to know how to install, use, and
 customize Goby.
