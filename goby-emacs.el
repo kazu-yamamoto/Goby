@@ -137,7 +137,6 @@
      (background-color . ,goby-background-color)
      (cursor-color     . ,goby-cursor-color)
      (mouse-color      . ,goby-pointer-color)))
-  (make-variable-frame-local 'face-font-rescale-alist)
   (modify-frame-parameters (selected-frame) '((face-font-rescale-alist . nil)))
   (goby-x-window-manager '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (run-hooks 'goby-decorate-initial-frame-hook))
