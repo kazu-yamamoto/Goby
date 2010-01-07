@@ -14,9 +14,9 @@
 (defvar goby-ps-eps-position nil)
 (defvar goby-ps-have-eps nil)
 
-(mapcar 'make-variable-buffer-local
-	'(goby-ps-eps-position
-	  goby-ps-have-eps))
+(mapc 'make-variable-buffer-local
+      '(goby-ps-eps-position
+	goby-ps-have-eps))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;

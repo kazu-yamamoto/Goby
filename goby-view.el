@@ -19,10 +19,10 @@
 (defvar goby-buffer-end nil)
 (defvar goby-buffer-page-end nil)
 
-(mapcar 'make-variable-buffer-local
-	'(goby-buffer-height
-	  goby-buffer-end
-	  goby-buffer-page-end))
+(mapc 'make-variable-buffer-local
+      '(goby-buffer-height
+	goby-buffer-end
+	goby-buffer-page-end))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
