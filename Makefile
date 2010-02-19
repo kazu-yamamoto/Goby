@@ -5,7 +5,7 @@ ELCDIR = $(PREFIX)/share/emacs/site-lisp/goby
 SRC = goby-emacs.el  goby-vars.el  goby.el  goby-view.el  goby-ps.el
 ELC = goby-emacs.elc goby-vars.elc goby.elc goby-view.elc goby-ps.elc
 
-ALSRC = goby-emacs.el  goby-vars.el goby.el goby-view.el goby-ps.el 
+ALSRC = goby-emacs.el  goby-vars.el goby.el goby-view.el goby-ps.el
 CHECK = xemacs # to check unused variables only
 
 MKDIR   = mkdir

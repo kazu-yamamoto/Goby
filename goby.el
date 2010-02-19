@@ -503,7 +503,7 @@ Minor mode for editing large TrueType fonts and images.
 ;;;
 
 (defun goby-face-increase-ratio-region (beg end &optional rectangle)
-  "Enlarge the characters in the region. 
+  "Enlarge the characters in the region.
 If called with '\\[universal-argument]', the target is the rectangle."
   (interactive "r\nP")
   (goby-face-region

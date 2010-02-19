@@ -92,9 +92,9 @@ be omitted."
    "/window-height {6 inch} def\n"
    "/screen-pixel-width "  (format "%d" (goby-display-pixel-width))  " def\n"
    "/screen-pixel-height " (format "%d" (goby-display-pixel-height)) " def\n"
-   "/default-pixel-width "  (format "%d" goby-default-face-pixel-width) " def\n" 
+   "/default-pixel-width "  (format "%d" goby-default-face-pixel-width) " def\n"
    "/default-pixel-height " (format "%d" goby-default-face-pixel-height) " def\n"
-   "/left-fringe-pixel " (format "%d" goby-ps-left-fringe-pixel-magic-number) " def\n" 
+   "/left-fringe-pixel " (format "%d" goby-ps-left-fringe-pixel-magic-number) " def\n"
    "/default-width {\n"
    "    window-width default-pixel-width mul screen-pixel-width div\n"
    "} def\n"
@@ -388,7 +388,7 @@ be omitted."
 
 (defun goby-ps-insert-image (ps-buf max)
   (let ((goby-buf (current-buffer))
-	file scale tag pixel-width 
+	file scale tag pixel-width
 	xy-ratio x-ratio y-ratio epsfile epsi)
     (when (looking-at goby-image-regex)
       (setq epsi nil)
@@ -525,7 +525,7 @@ be omitted."
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions
 ;; are met:
-;; 
+;;
 ;; 1. Redistributions of source code must retain the above copyright
 ;;    notice, this list of conditions and the following disclaimer.
 ;; 2. Redistributions in binary form must reproduce the above copyright
@@ -534,7 +534,7 @@ be omitted."
 ;; 3. Neither the name of the author nor the names of its contributors
 ;;    may be used to endorse or promote products derived from this software
 ;;    without specific prior written permission.
-;; 
+;;
 ;; THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
 ;; ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 ;; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR

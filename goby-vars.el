@@ -129,7 +129,7 @@
 
 (defvar goby-view-mouse-face-foreground-color
   (goby-def-theme "#ccaa00" "#003355")) ;; 553300
-(defvar goby-view-mouse-face-background-color   
+(defvar goby-view-mouse-face-background-color
   (goby-def-theme "#3355ff" "#ffccaa")) ;;aaccff
 
 (defface goby-view-mouse
@@ -306,7 +306,7 @@ Set this to non-nil when you are using KDE or Gnome."
 
 (cond
  ((eq system-type 'darwin)
-  (defvar goby-prog-capture "screencapture") 
+  (defvar goby-prog-capture "screencapture")
   (defvar goby-prog-capture-args 'goby-prog-capture-args-for-darwin))
  (t
   (defvar goby-prog-capture "import")
@@ -330,7 +330,7 @@ Set this to non-nil when you are using KDE or Gnome."
 ;; Redistribution and use in source and binary forms, with or without
 ;; modification, are permitted provided that the following conditions
 ;; are met:
-;; 
+;;
 ;; 1. Redistributions of source code must retain the above copyright
 ;;    notice, this list of conditions and the following disclaimer.
 ;; 2. Redistributions in binary form must reproduce the above copyright
@@ -339,7 +339,7 @@ Set this to non-nil when you are using KDE or Gnome."
 ;; 3. Neither the name of the author nor the names of its contributors
 ;;    may be used to endorse or promote products derived from this software
 ;;    without specific prior written permission.
-;; 
+;;
 ;; THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
 ;; ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 ;; IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
