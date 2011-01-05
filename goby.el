@@ -212,8 +212,8 @@ Minor mode for editing large TrueType fonts and images.
 		    (> (prefix-numeric-value arg) 0)))
   (cond
    (goby-mode
-    (make-local-variable 'vertical-centering-font-regexp)
-    (setq vertical-centering-font-regexp nil)
+    (set (make-local-variable 'vertical-centering-font-regexp) nil)
+    (set (make-local-variable 'face-font-rescale-alist) '(("dummy" . 1.0)))
     (unless (eq arg 'noimage)
       (goby-highlight-buffer 'image))
     (add-hook 'after-change-functions 'goby-highlight nil 'local)
@@ -223,6 +223,7 @@ Minor mode for editing large TrueType fonts and images.
     (goby-local-set-map))
    (t
     (kill-local-variable 'vertical-centering-font-regexp)
+    (kill-local-variable 'face-font-rescale-alist)
     (kill-local-variable 'after-change-functions)
     (kill-local-variable 'after-save-hook)
     (kill-local-variable 'tab-width)
