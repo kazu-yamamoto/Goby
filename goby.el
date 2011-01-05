@@ -49,8 +49,6 @@
 (defvar goby-j-fonts-base 10)
 (defvar goby-m-fonts-base 100)
 
-(defvar goby-use-italic-for-math t)
-
 (defvar goby-math-base
   (if goby-use-italic-for-math goby-m-fonts-base goby-a-fonts-base))
 

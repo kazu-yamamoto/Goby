@@ -111,6 +111,8 @@
 
 (defvar goby-theme 'light)
 
+(defvar goby-use-italic-for-math t)
+
 ;; to pacify the byte-compiler
 (defmacro goby-def-theme (dark light)
   `(if (eq goby-theme 'dark) ,dark ,light))
