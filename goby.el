@@ -49,6 +49,11 @@
 (defvar goby-j-fonts-base 10)
 (defvar goby-m-fonts-base 100)
 
+(defvar goby-use-italic-for-math t)
+
+(defvar goby-math-base
+  (if goby-use-italic-for-math goby-m-fonts-base goby-a-fonts-base))
+
 (defvar goby-a-fonts-lim (+ goby-a-fonts-base (length goby-a-fonts)))
 (defvar goby-j-fonts-lim (+ goby-j-fonts-base (length goby-j-fonts)))
 
@@ -588,7 +593,7 @@ If called with '\\[universal-argument]', the target is the rectangle."
       (goby-face-region
        (match-beginning 0) (match-end 0) nil
        (lambda (frc)
-	 (goby-face-set-family frc goby-m-fonts-base)))))
+	 (goby-face-set-family frc goby-math-base)))))
   (goby-face-math-set-prop beg end t))
 
 (defun goby-face-math-set-raise (beg end factor)
@@ -615,7 +620,7 @@ If called with '\\[universal-argument]', the target is the rectangle."
 	 (setq raise 0.5)))
        (setq ratio (goby-face-math-magic ratio))
        (goby-face-set-ratio frc ratio)
-       (goby-face-set-family frc goby-m-fonts-base)
+       (goby-face-set-family frc goby-math-base)
        (goby-face-math-set-raise beg end raise))))) ;; tricky
 
 (defun goby-face-math-magic (num)
@@ -633,7 +638,7 @@ If called with '\\[universal-argument]', the target is the rectangle."
    beg end rectangle
    (lambda (frc)
      (goby-face-set-ratio frc (goby-face-math-magic (goby-face-get-ratio frc)))
-     (goby-face-set-family frc goby-m-fonts-base))))
+     (goby-face-set-family frc goby-math-base))))
 
 (defun goby-face-math-raise-region (beg end)
   "Raise the characters in the region."
