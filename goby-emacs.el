@@ -120,6 +120,11 @@
   (when (and goby-use-advanced-window-manager (fboundp 'x-send-client-message))
     (x-send-client-message nil 0 nil "_NET_WM_STATE" 32 arg)))
 
+(defvar goby-face-font-rescale-alist
+  (if (eq emacs-major-version 22)
+      '(("dummy" . 1.0))
+    face-font-rescale-alist))
+
 (defun goby-decorate-initial-frame (width height fringe)
   (modify-frame-parameters
    (selected-frame)
@@ -137,7 +142,9 @@
      (background-color . ,goby-background-color)
      (cursor-color     . ,goby-cursor-color)
      (mouse-color      . ,goby-pointer-color)))
-  (modify-frame-parameters (selected-frame) '((face-font-rescale-alist . nil)))
+  (modify-frame-parameters
+   (selected-frame)
+   `((face-font-rescale-alist . ,goby-face-font-rescale-alist)))
   (goby-x-window-manager '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
   (run-hooks 'goby-decorate-initial-frame-hook))
 
@@ -164,6 +171,7 @@
      (top  . (+ ,goby-window-manager-view-top-position))
      (left . (+ ,goby-window-manager-view-left-position))
      (height . ,(+ height goby-window-manager-bottom-margin))))
+  (if (fboundp 'ns-toggle-fullscreen) (ns-toggle-fullscreen))
   (goby-x-window-manager '(1 "_NET_WM_STATE_FULLSCREEN" 0))
   (copy-face 'fringe 'goby-old-fringe-face)
   (set-face-attribute
@@ -182,6 +190,7 @@
   (when (boundp 'x-pointer-shape)
     (setq x-pointer-shape goby-old-pointer-shape))
   (setq goby-old-pointer-shape nil)
+  (if (fboundp 'ns-toggle-fullscreen) (ns-toggle-fullscreen))
   (modify-frame-parameters
    (selected-frame)
    `((cursor-type . box)
