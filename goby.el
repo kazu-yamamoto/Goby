@@ -2,7 +2,7 @@
 
 ;; Author:  Kazu Yamamoto <Kazu@Mew.org>
 ;; Created: Aug  9, 2003
-;; Revised: Apr 12, 2009
+;; Revised: Jun 29, 2011
 
 ;;; Commentary:
 
@@ -10,7 +10,7 @@
 
 ;;; Code:
 
-(defconst goby-version "1.0")
+(defconst goby-version "1.1")
 
 (require 'goby-vars)
 (require 'goby-emacs)
