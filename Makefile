@@ -49,3 +49,9 @@ distclean:
 
 diff::
 	-cvs diff -c -F "^(" > $@
+
+VERSION = `git tag | tail -1 | sed -e 's/v//'`
+
+archive:
+	git archive master -o ~/goby-$(VERSION).tar --prefix=goby-$(VERSION)/
+	gzip ~/goby-$(VERSION).tar
