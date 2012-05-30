@@ -1,12 +1,13 @@
-;; Goby: goby.el
+;;; goby.el --- WYSIWYG presentation tool
 
-;; Author:  Kazu Yamamoto <Kazu@Mew.org>
-;; Created: Aug  9, 2003
-;; Revised: Jun 29, 2011
+;; Author:   Kazu Yamamoto <Kazu@Mew.org>
+;; Created:  Aug  9, 2003
+;; Revised:  Jun 29, 2011
+;; Homepage: http://www.mew.org/~kazu/proj/goby/
 
 ;;; Commentary:
 
-;; Home page: http://www.mew.org/~kazu/proj/goby/
+;; Goby is a WYSIWYG presentation tool, which runs on Emacs 22 or later.
 
 ;;; Code:
 
