@@ -427,7 +427,9 @@ be omitted."
       (with-temp-buffer
 	(goby-image-safe
 	 (set-buffer-multibyte nil)
-	 (call-process topnm file '(t nil) nil "-mix")
+	 (if (string= topnm "pngtopnm")
+	     (call-process topnm file '(t nil) nil "-mix")
+	   (call-process topnm file '(t nil) nil))
 ;;	 (call-process-region (point-min) (point-max) goby-prog-ppmtopgm
 ;;			      t '(t nil) nil)
 	 (when pixel-width
