@@ -1122,7 +1122,8 @@ If called with '\\[universal-argument]', the target is the rectangle."
 	    (if nl (insert "\n"))
 	    (insert goby-properties-string "\n" (pp props))
 	    (let ((coding-system-for-write cs))
-	      (write-region (point-min) (point-max) file 'append))))))))
+	      (write-region (point-min) (point-max) file 'append))))
+	(set-visited-file-modtime)))))
 
 (defun goby-put-property-face (props)
   (let (prop beg end face frc tabnum color family old-family)
