@@ -106,7 +106,7 @@
 (defvar goby-window-manager-view-top-position -22)
 (defvar goby-window-manager-view-left-position 0)
 
-(defvar goby-window-manager-bottom-margin 5) ;; # of line
+(defvar goby-window-manager-bottom-margin 0) ;; # of line
 (defvar goby-window-manager-bottom-search-margin 3) ;; # of line
 
 (defvar goby-theme 'light)
@@ -222,6 +222,7 @@ Set this to non-nil when you are using KDE or Gnome."
 
 (unless goby-view-mode-map
   (setq goby-view-mode-map (make-sparse-keymap))
+  (define-key goby-view-mode-map "a"         'goby-view-adjust)
   (define-key goby-view-mode-map " "         'goby-next-page)
   (define-key goby-view-mode-map "n"         'goby-next-page)
   (define-key goby-view-mode-map "p"         'goby-prev-page)
