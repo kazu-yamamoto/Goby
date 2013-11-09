@@ -178,9 +178,9 @@
     (run-hooks 'goby-view-mode-exit-hook2)
     (setq goby-buffer-height nil)
     (setq goby-buffer-end nil)
-    (funcall goby-major-mode)
-    (goby-mode 'noimage)
-    (set-buffer-modified-p nil)))
+    (funcall goby-major-mode))
+  (goby-mode 'noimage)
+  (set-buffer-modified-p nil))
 
 (defun goby-view-iconify ()
   "Quit Goby View mode and iconify this frame."
