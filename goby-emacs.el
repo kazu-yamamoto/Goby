@@ -182,14 +182,6 @@
   (set-face-attribute
    'mode-line (selected-frame) :box nil))
 
-(defun goby-view-adjust ()
-  (interactive)
-  (set-frame-height (selected-frame) 45)
-  (set-frame-width (selected-frame) 126)
-  (when (and (eq emacs-major-version 24)
-	     (eq emacs-minor-version 1))
-    (set-frame-position (selected-frame) 0 -30)))
-
 (defun goby-clean-view-frame (height)
   (when (boundp 'x-pointer-shape)
     (setq x-pointer-shape goby-old-pointer-shape))
