@@ -100,11 +100,11 @@
 
 (defun goby-width-height ()
   (cond
-   ((eq window-system 'mac)
-    (let* ((fontset (or (cdr (assoc 'font default-frame-alist))
-			"fontset-default"))
-	   (finfo (font-info (fontset-font fontset ?a))))
-      (list (aref finfo 2) (aref finfo 3))))
+   ;; ((eq window-system 'mac)
+   ;;  (let* ((fontset (or (cdr (assoc 'font default-frame-alist))
+   ;; 			"fontset-default"))
+   ;; 	   (finfo (font-info (fontset-font fontset ?a))))
+   ;;    (list (aref finfo 2) (aref finfo 3))))
    (t
     (list (frame-char-width) (frame-char-height)))))
 
