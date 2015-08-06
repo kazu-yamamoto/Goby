@@ -252,6 +252,8 @@ Minor mode for editing large TrueType fonts and images.
   (let ((ret (* (goby-get-pixel-height ratio) goby-emacs-pixel-base)))
     ;; Mac is 72dpi, Windows is 96dpi
     (if (eq window-system 'w32) (setq ret (* (/ ret 4) 3)))
+    ;; FIXME: very ad-hoc adjustment
+    (if (eq window-system 'mac) (setq ret (* (/ ret 10) 9)))
     ret))
 
 (defun goby-make-face (family-num ratio color-num)

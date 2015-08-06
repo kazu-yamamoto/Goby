@@ -144,6 +144,7 @@
 (defvar goby-old-fringe-face nil)
 (defvar goby-old-modeline-face nil)
 (defvar goby-old-menu-bar-lines nil)
+(defvar goby-old-width nil)
 
 (defun goby-decorate-view-frame (height)
   ;; Emacs does not allow the cursor to have the same color as the
@@ -153,6 +154,8 @@
     (setq x-pointer-shape goby-view-pointer-shape))
   (setq goby-old-menu-bar-lines
 	(frame-parameter (selected-frame) 'menu-bar-lines))
+  (setq goby-old-width
+	(frame-parameter (selected-frame) 'width))
   (modify-frame-parameters
    (selected-frame)
    `((cursor-type . nil)
@@ -160,12 +163,10 @@
      (vertical-scroll-bars . nil)
      (menu-bar-lines . 0)
      (tool-bar-lines . 0)
-     (mouse-color . ,goby-view-pointer-color)
-     (fullscreen . fullscreen)
-     (top  . (+ ,goby-window-manager-view-top-position))
-     (left . (+ ,goby-window-manager-view-left-position))
-     (height . ,(+ height goby-window-manager-bottom-margin))
-     ))
+     (mouse-color . ,goby-view-pointer-color)))
+  (modify-frame-parameters
+   (selected-frame)
+   `((fullscreen . fullscreen)))
   (if (fboundp 'ns-fullscreen-toggle) (ns-fullscreen-toggle))
   (if (fboundp 'ns-toggle-fullscreen) (ns-toggle-fullscreen))
   (goby-x-window-manager '(1 "_NET_WM_STATE_FULLSCREEN" 0))
@@ -190,15 +191,14 @@
   (if (fboundp 'ns-fullscreen-toggle) (ns-fullscreen-toggle))
   (modify-frame-parameters
    (selected-frame)
+   `((fullscreen . nil)))
+  (modify-frame-parameters
+   (selected-frame)
    `((cursor-type . box)
      (name . ,goby-frame)
      (vertical-scroll-bars . ,goby-vertical-scroll-bars)
      (menu-bar-lines . ,goby-old-menu-bar-lines)
-     (mouse-color . ,goby-pointer-color)
-     (height . ,height)
-     (fullscreen . nil)
-     (top  . (+ ,goby-window-manager-top-position))
-     (left . (+ ,goby-window-manager-left-position))))
+     (mouse-color . ,goby-pointer-color)))
   (setq goby-old-menu-bar-lines nil)
   (goby-x-window-manager '(0 "_NET_WM_STATE_FULLSCREEN" 0))
   (cond
@@ -213,7 +213,12 @@
     (copy-face 'goby-old-fringe-face 'fringe)))
   (copy-face 'goby-old-modeline-face 'mode-line)
   (setq goby-old-fringe-face nil)
-  (setq goby-old-modeline-face nil))
+  (setq goby-old-modeline-face nil)
+  ;; very ad-hoc fix
+  (sit-for 2)
+  (modify-frame-parameters
+   (selected-frame)
+   `((width . ,goby-old-width))))
 
 (provide 'goby-emacs)
 
