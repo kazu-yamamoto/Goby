@@ -215,10 +215,11 @@
   (setq goby-old-fringe-face nil)
   (setq goby-old-modeline-face nil)
   ;; very ad-hoc fix
-  (sit-for 2)
+  ;;  (sit-for 2)
   (modify-frame-parameters
    (selected-frame)
-   `((width . ,goby-old-width))))
+   `((width . ,goby-old-width)
+     (height . ,height))))
 
 (provide 'goby-emacs)
 
