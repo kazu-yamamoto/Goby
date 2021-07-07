@@ -164,9 +164,6 @@
      (menu-bar-lines . 0)
      (tool-bar-lines . 0)
      (mouse-color . ,goby-view-pointer-color)))
-  (modify-frame-parameters
-   (selected-frame)
-   `((fullscreen . fullscreen)))
   (if (fboundp 'ns-fullscreen-toggle) (ns-fullscreen-toggle))
   (if (fboundp 'ns-toggle-fullscreen) (ns-toggle-fullscreen))
   (goby-x-window-manager '(1 "_NET_WM_STATE_FULLSCREEN" 0))

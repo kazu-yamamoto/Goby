@@ -156,7 +156,7 @@
 	       (< goby-display-pixel-width (display-pixel-width)))
 	  (setq goby-vertical-scroll-bars t))
       (setq width  (- (ceiling (/ (float (goby-display-pixel-width)) goby-default-face-pixel-width)) 2))
-      (setq height (- (/ (goby-display-pixel-height) goby-default-face-pixel-height) 2))
+      (setq height (/ (goby-display-pixel-height) goby-default-face-pixel-height))
       (if (/= (% (goby-display-pixel-height) goby-default-face-pixel-height) 0)
 	  (setq height (1- height)))
       (goby-decorate-initial-frame
