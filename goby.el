@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil; -*-
 ;;; goby.el --- WYSIWYG presentation tool
 
 ;; Author:   Kazu Yamamoto <Kazu@Mew.org>

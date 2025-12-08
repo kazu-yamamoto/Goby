@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: nil; -*-
 ;; Goby: goby-view.el
 
 ;; Author:  Kazu Yamamoto <Kazu@Mew.org>
