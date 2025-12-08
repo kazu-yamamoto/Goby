@@ -1105,10 +1105,10 @@ If called with '\\[universal-argument]', the target is the rectangle."
 	(if to-buffer
 	    (progn
 	      (if nl (insert "\n"))
-	      (insert goby-properties-string "\n" (pp props)))
+	      (insert goby-properties-string "\n" (pp-to-string props)))
 	  (with-temp-buffer
 	    (if nl (insert "\n"))
-	    (insert goby-properties-string "\n" (pp props))
+	    (insert goby-properties-string "\n" (pp-to-string props))
 	    (let ((coding-system-for-write cs))
 	      (write-region (point-min) (point-max) file 'append))))
 	(set-visited-file-modtime)))))
