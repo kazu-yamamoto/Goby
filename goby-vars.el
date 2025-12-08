@@ -42,50 +42,6 @@
   :type 'symbol
   :group 'goby)
 
-(defcustom goby-minor-mode-prefix "\C-c;"
-  "*Prefix key to use for the Goby minor mode"
-  :type 'string
-  :group 'goby)
-
-(easy-mmode-defmap goby-edit-mode-map
- '(("f" . goby-face-next-font-region)
-   ("r" . goby-face-next-color-region)
-   ("o" . goby-face-color-region)
-   ("p" . goby-face-increase-ratio-region)
-   ("n" . goby-face-decrease-ratio-region)
-   ("m" . goby-face-math-region)
-   ("^" . goby-face-math-power-region)
-   ("_" . goby-face-math-aux-region)
-   ("\C-p" . goby-face-math-raise-region)
-   ("\C-n" . goby-face-math-lower-region)
-   ("y" . goby-highlight-region)
-   ("2" . goby-face-math-1/2)
-   ("3" . goby-face-math-3/4)
-   ("4" . goby-face-math-1/4)
-   ("." . goby-face-math-dot)
-   ("x" . goby-face-math-times)
-   ("/" . goby-face-math-divide)
-   ("i" . goby-insert-image)
-   ("s" . goby-change-scale)
-   ("t" . goby-toggle-tag)
-   ("c" . goby-center-line)
-   ("-" . goby-insert-bar)
-   ("*" . goby-insert-item)
-   ("\"" . goby-insert-pause)
-   ("I" . goby-insert-item-region)
-   ("v" . goby-view-mode)
-   ("@" . goby-dump-screen)
-   ("#" . goby-make-ps)
-   ("l" . goby-insert-newpage)
-   ("=" . goby-count-page)
-   ("h" . iconify-frame)
-   ("\C-l" . goby-top-line))
- "Keymap for Goby edit mode")
-
-(easy-mmode-defmap goby-mode-map
- `((,goby-minor-mode-prefix . ,goby-edit-mode-map))
- "Keymap for Goby minor mode")
-
 (defvar goby-frame  "*goby*")
 (defvar goby-buffer "*goby scratch*")
 

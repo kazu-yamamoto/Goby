@@ -171,22 +171,6 @@
 ;;;
 
 (defvar goby-mode nil)
-(make-variable-buffer-local 'goby-mode)
-(add-minor-mode 'goby-mode goby-mode-lighter goby-mode-map)
-
-(defun goby-local-unset-map ()
-  (use-local-map goby-buffer-keymap)
-  (setq goby-buffer-keymap nil))
-
-(defun goby-local-set-map ()
-  (setq goby-buffer-keymap (current-local-map))
-  (use-local-map (if (current-local-map)
-		     (copy-keymap (current-local-map))
-		   (make-sparse-keymap)))
-  (local-set-key [?\t]      'goby-insert-tab)
-  (local-set-key [?\C-x ?u] 'goby-undo)
-  (local-set-key [?\C-_]    'goby-undo)
-  (local-set-key [?\C-/]    'goby-undo))
 
 (defun goby-insert-tab (&optional arg)
   "Insert a TAB character."
@@ -1209,6 +1193,72 @@ If called with '\\[universal-argument]', the target is the rectangle."
 	(forward-line)
 	(setq i (1+ i))))
     (message "%d pages" i)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;
+;;; Keymap
+;;;
+
+(defcustom goby-minor-mode-prefix "C-c ;"
+  "*Prefix key to use for the Goby minor mode"
+  :type 'string
+  :group 'goby)
+
+(defvar-keymap goby-edit-mode-map
+  :doc  "Keymap for Goby edit mode"
+  "f" #'goby-face-next-font-region
+  "r" #'goby-face-next-color-region
+  "o" #'goby-face-color-region
+  "p" #'goby-face-increase-ratio-region
+  "n" #'goby-face-decrease-ratio-region
+  "m" #'goby-face-math-region
+  "^" #'goby-face-math-power-region
+  "_" #'goby-face-math-aux-region
+  "C-p" #'goby-face-math-raise-region
+  "C-n" #'goby-face-math-lower-region
+  "y" #'goby-highlight-region
+  "2" #'goby-face-math-1/2
+  "3" #'goby-face-math-3/4
+  "4" #'goby-face-math-1/4
+  "." #'goby-face-math-dot
+  "x" #'goby-face-math-times
+  "/" #'goby-face-math-divide
+  "i" #'goby-insert-image
+  "s" #'goby-change-scale
+  "t" #'goby-toggle-tag
+  "c" #'goby-center-line
+  "-" #'goby-insert-bar
+  "*" #'goby-insert-item
+  "\"" #'goby-insert-pause
+  "I" #'goby-insert-item-region
+  "v" #'goby-view-mode
+  "@" #'goby-dump-screen
+  "#" #'goby-make-ps
+  "l" #'goby-insert-newpage
+  "=" #'goby-count-page
+  "h" #'iconify-frame
+  "C-l" #'goby-top-line)
+
+(defvar-keymap goby-mode-map
+  :doc "Keymap for Goby minor mode"
+  goby-minor-mode-prefix goby-edit-mode-map)
+
+(make-variable-buffer-local 'goby-mode)
+(add-minor-mode 'goby-mode goby-mode-lighter goby-mode-map)
+
+(defun goby-local-unset-map ()
+  (use-local-map goby-buffer-keymap)
+  (setq goby-buffer-keymap nil))
+
+(defun goby-local-set-map ()
+  (setq goby-buffer-keymap (current-local-map))
+  (use-local-map (if (current-local-map)
+		     (copy-keymap (current-local-map))
+		   (make-sparse-keymap)))
+  (local-set-key [?\t]      'goby-insert-tab)
+  (local-set-key [?\C-x ?u] 'goby-undo)
+  (local-set-key [?\C-_]    'goby-undo)
+  (local-set-key [?\C-/]    'goby-undo))
 
 (provide 'goby)
 
