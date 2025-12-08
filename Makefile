@@ -5,9 +5,6 @@ ELCDIR = $(PREFIX)/share/emacs/site-lisp/goby
 SRC = goby-emacs.el  goby-vars.el  goby.el  goby-view.el  goby-ps.el
 ELC = goby-emacs.elc goby-vars.elc goby.elc goby-view.elc goby-ps.elc
 
-ALSRC = goby-emacs.el  goby-vars.el goby.el goby-view.el goby-ps.el
-CHECK = xemacs # to check unused variables only
-
 MKDIR   = mkdir
 RM      = rm -f
 INSTALL = install -c -m 644
@@ -18,17 +15,12 @@ OTH = diff $(PTH)
 all: compile
 
 compile: $(SRC)
-	echo '(setq load-path (cons "." load-path))' > $(PTH)
+	echo ';;; -*- lexical-binding: nil; -*-' > $(PTH)
+	echo '(setq load-path (cons "." load-path))' >> $(PTH)
 	for el in $(SRC); do \
 	  $(EMACS) -q -no-site-file -batch -l $(PTH) -f batch-byte-compile $$el; \
 	done
 	$(RM) $(PTH)
-
-check: $(ALSRC)
-	echo '(setq load-path (cons "." load-path))' > $(PTH)
-	for el in $(ALSRC); do \
-	  $(CHECK) -q -no-site-file -batch -l $(PTH) -f batch-byte-compile $$el; \
-	done
 
 install:
 	if [ ! -d $(ELCDIR) ]; then \
