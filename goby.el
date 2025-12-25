@@ -740,7 +740,7 @@ If called with '\\[universal-argument]', the target is the rectangle."
      ((string-match "^\\([0-9]+\\)/\\([0-9]+\\)$" scale)
       (setq numerator   (string-to-number (goby-match-string 1 scale)))
       (setq denominator (string-to-number (goby-match-string 2 scale))))
-     ((string-match "^\\([0-9]+\\)$" scale)
+     ((string-match "^\\([0-9]+\\)%?$" scale)
       (setq numerator   (string-to-number (goby-match-string 1 scale)))
       (setq denominator 100)))
     (setq pixel-width (/ (* (goby-display-pixel-width) numerator) denominator))
