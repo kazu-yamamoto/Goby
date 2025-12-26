@@ -355,8 +355,11 @@ be omitted."
 	(if (string-match "[][()<>/%\\]" str)
 	    (setq str (goby-ps-get-hexstr str 0))
 	  (setq str (concat "(" str ")"))))
-       ((memq 'latin-iso8859-1 (find-charset-string str))
-	(setq str nil)) ;; xxx
+       ((or (memq 'latin-iso8859-1 (find-charset-string str)) (memq 'japanese-jisx0212 (find-charset-string str)))
+	(if italic (setq family goby-math))
+	(setq family (if (string= family goby-mincho) goby-times goby-helvetica))
+	(setq str (goby-ps-get-hexstr
+		   (encode-coding-string str 'iso-8859-1) 0)))
        (t
 	(if (and italic (string= family goby-times)) (setq family goby-mincho))
 	(setq str (goby-ps-get-hexstr
